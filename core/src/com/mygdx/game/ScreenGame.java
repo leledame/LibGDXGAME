@@ -10,13 +10,25 @@ public class ScreenGame implements Screen {
 
     Bird bird;
 
+    PointCounter pointCounter;
+
     int tubeCount = 3;
     Tube[] tubes;
 
-    boolean isGameOver;
+    int gamePoints = 0;
+    boolean isGameOver = false;
+
+    final int pointCounterMarginTop = 60;
+    final int pointCounterMarginRight = 400;
+
 
     ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
+
+        pointCounter = new PointCounter(
+                MyGdxGame.SCR_WIDTH - pointCounterMarginRight,
+                MyGdxGame.SCR_HEIGHT - pointCounterMarginTop
+        );
 
         initTubes();
         bird = new Bird(0, 0, 10, 250, 200);
@@ -26,6 +38,7 @@ public class ScreenGame implements Screen {
     @Override
     public void show() {
         isGameOver = false;
+        gamePoints = 0;
     }
 
     @Override
@@ -46,6 +59,10 @@ public class ScreenGame implements Screen {
             if (tube.isHit(bird)) {
                 System.out.println("hit");
                 isGameOver = true;
+            } else if (tube.needAddPoint(bird)) {
+                gamePoints += 1;
+                tube.setPointReceived();
+                System.out.println(gamePoints);
             }
         }
 
@@ -56,6 +73,8 @@ public class ScreenGame implements Screen {
 
         bird.draw(myGdxGame.batch);
         for (Tube tube : tubes) tube.draw(myGdxGame.batch);
+
+        pointCounter.draw(myGdxGame.batch, gamePoints);
 
         myGdxGame.batch.end();
     }
