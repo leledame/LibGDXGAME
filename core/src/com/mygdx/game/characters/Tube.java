@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.characters;
 
 
 import static com.mygdx.game.MyGdxGame.SCR_HEIGHT;
@@ -37,12 +37,12 @@ public class Tube {
         textureDownTube = new Texture("tubes/tube.png");
     }
 
-    void draw(Batch batch) {
+    public void draw(Batch batch) {
         batch.draw(textureUpperTube, x, gapY + gapHeight / 2, width, height);
         batch.draw(textureDownTube, x, gapY - gapHeight / 2 - height, width, height);
     }
 
-    void move() {
+    public void move() {
         x -= speed;
         if (x < -width) {
             isPointReceived = false;
@@ -63,7 +63,7 @@ public class Tube {
         return false;
     }
 
-    void dispose() {
+    public void dispose() {
         textureDownTube.dispose();
         textureUpperTube.dispose();
     }

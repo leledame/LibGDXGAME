@@ -1,8 +1,13 @@
-package com.mygdx.game;
+package com.mygdx.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.mygdx.game.MyGdxGame;
+import com.mygdx.game.characters.Bird;
+import com.mygdx.game.characters.Tube;
+import com.mygdx.game.components.MovingBackground;
+import com.mygdx.game.components.PointCounter;
 
 public class ScreenGame implements Screen {
 
@@ -21,8 +26,10 @@ public class ScreenGame implements Screen {
     final int pointCounterMarginTop = 60;
     final int pointCounterMarginRight = 400;
 
+    MovingBackground background;
 
-    ScreenGame(MyGdxGame myGdxGame) {
+
+    public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
 
         pointCounter = new PointCounter(
@@ -31,6 +38,7 @@ public class ScreenGame implements Screen {
         );
 
         initTubes();
+        background = new MovingBackground();
         bird = new Bird(0, 0, 10, 250, 200);
     }
 
@@ -43,6 +51,13 @@ public class ScreenGame implements Screen {
 
     @Override
     public void render(float delta) {
+
+        if (Gdx.input.justTouched()) {
+            bird.onClick();
+        }
+
+        background.move();
+        bird.fly();
 
         if (Gdx.input.justTouched()) {
             bird.onClick();
@@ -71,9 +86,9 @@ public class ScreenGame implements Screen {
         myGdxGame.batch.setProjectionMatrix(myGdxGame.camera.combined);
         myGdxGame.batch.begin();
 
+        background.draw(myGdxGame.batch);
         bird.draw(myGdxGame.batch);
         for (Tube tube : tubes) tube.draw(myGdxGame.batch);
-
         pointCounter.draw(myGdxGame.batch, gamePoints);
 
         myGdxGame.batch.end();
@@ -102,8 +117,10 @@ public class ScreenGame implements Screen {
     @Override
     public void dispose() {
         bird.dispose();
+        background.dispose();
         for (int i = 0; i < tubeCount; i++) {
             tubes[i].dispose();
+
         }
     }
 
