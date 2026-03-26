@@ -11,7 +11,7 @@ public class Bird {
 
     int speed;
     int jumpHeight;
-    final int maxHeightOfJump = 200;
+    final int maxHeightOfJump = 100;
     boolean jump;
 
     int frameCounter;
@@ -51,8 +51,12 @@ public class Bird {
     }
 
     public boolean isInField() {
-        if (y + height < 0) return false;
-        if (y > SCR_HEIGHT) return false;
+        if (y + height < 0) {
+            return false;
+        }
+        if (y > SCR_HEIGHT) {
+            return false;
+        }
         return true;
     }
 
