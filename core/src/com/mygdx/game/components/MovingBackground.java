@@ -6,9 +6,10 @@ import com.mygdx.game.MyGdxGame;
 
 public class MovingBackground {
 
-    Texture texture;
+    static Texture texture;
 
-    int texture1X, texture2X;
+    static int texture1X;
+    static int texture2X;
     int speed = 2;
 
     public MovingBackground(String s) {
@@ -29,7 +30,7 @@ public class MovingBackground {
         }
     }
 
-    public void draw(Batch batch) {
+    public static void draw(Batch batch) {
         batch.draw(texture, texture1X, 0, MyGdxGame.SCR_WIDTH, MyGdxGame.SCR_HEIGHT);
         batch.draw(texture, texture2X, 0, MyGdxGame.SCR_WIDTH, MyGdxGame.SCR_HEIGHT);
     }

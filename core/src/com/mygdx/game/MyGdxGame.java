@@ -5,9 +5,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.screens.ScreenGame;
+import com.mygdx.game.screens.ScreenMenu;
 import com.mygdx.game.screens.ScreenRestart;
 
 public class MyGdxGame extends Game {
+    public ScreenMenu screenMenu;
 
     public SpriteBatch batch;
     public OrthographicCamera camera;
@@ -22,6 +24,7 @@ public class MyGdxGame extends Game {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, SCR_WIDTH, SCR_HEIGHT);
 
+        screenMenu = new ScreenMenu(this);
         screenGame = new ScreenGame(this);
         screenRestart = new ScreenRestart(this);
         setScreen(screenGame);

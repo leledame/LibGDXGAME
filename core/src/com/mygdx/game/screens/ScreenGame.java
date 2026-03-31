@@ -43,7 +43,7 @@ public class ScreenGame implements Screen {
 
     public void restartGame() {
         initTubes();
-        bird = new Bird(0, MyGdxGame.SCR_HEIGHT / 2, 10, 250, 200);
+        bird = new Bird(0, MyGdxGame.SCR_HEIGHT / 2, 4, 250, 200);
         isGameOver = false;
         gamePoints = 0;
     }
