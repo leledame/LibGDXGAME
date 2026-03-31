@@ -13,7 +13,7 @@ public class MyGdxGame extends Game {
     public OrthographicCamera camera;
 
     public static final int SCR_WIDTH = 1280, SCR_HEIGHT = 720;
-    public Screen screenRestart;
+    public ScreenRestart screenRestart;
     public ScreenGame screenGame;
 
     @Override

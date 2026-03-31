@@ -23,7 +23,7 @@ public class Tube {
     final int width = 200;
     final int height = 700;
     int gapHeight = 400;
-    int padding = 100;
+    int padding = 150;
     boolean isPointReceived;
 
     public Tube(int tubeCount, int tubeIdx) {
@@ -69,7 +69,7 @@ public class Tube {
     }
 
     public boolean needAddPoint(Bird bird) {
-        return bird.x > x + width && !isPointReceived;
+        return bird.x >= x + width && !isPointReceived;
     }
 
     public void setPointReceived() {
