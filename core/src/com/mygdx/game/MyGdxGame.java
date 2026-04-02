@@ -27,7 +27,7 @@ public class MyGdxGame extends Game {
         screenMenu = new ScreenMenu(this);
         screenGame = new ScreenGame(this);
         screenRestart = new ScreenRestart(this);
-        setScreen(screenGame);
+        setScreen(screenMenu);
     }
 
 

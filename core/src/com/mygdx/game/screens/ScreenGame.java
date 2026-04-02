@@ -38,7 +38,7 @@ public class ScreenGame implements Screen {
         );
 
         restartGame();
-        background = new MovingBackground("backgrounds/restart_bg.png");
+        background = new MovingBackground("backgrounds/game_bg.png");
     }
 
     public void restartGame() {
